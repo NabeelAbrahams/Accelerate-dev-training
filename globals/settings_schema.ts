@@ -309,9 +309,7 @@ export const settingsSchema: ShopifySettings = [
   },
   {
     name: "Fonts",
-    settings: [
-      ...fontGroup({ index: 1 }),
-    ],
+    settings: [...fontGroup({ index: 1 })],
   },
   typographyGroups(1),
   typographyGroups(2),
