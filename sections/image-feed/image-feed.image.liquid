@@ -15,10 +15,12 @@
 {% assign subtitle = subtitle_richtext | default: subtitle %}
 
 {% if url == blank %}
-  <figure id="block--{{ block.id }}" {{ block.shopify_attributes }}
-          class="image-feed__image relative w-full {{ section.settings.image__aspect_ratio }} overflow-hidden {{ responsive_visibility }}"
-          style="border: solid {{ border_width | default: 0 }}px var(--color-primary-outline);"
-          data-scroll-item>
+  <figure
+    id="block--{{ block.id }}"
+    {{ block.shopify_attributes }}
+    class="image-feed__image relative w-full {{ section.settings.image__aspect_ratio }} overflow-hidden {{ responsive_visibility }}"
+    style="border: solid {{ border_width | default: 0 }}px var(--color-primary-outline);"
+    data-scroll-item>
 
     {% if image == blank %}
       {% assign placeholderImage = 'product-' | append: forloop.index %}
@@ -26,8 +28,7 @@
 
     {% render '_image', image: image, width: 700, class: "absolute inset-0 w-full h-full object-cover", placeholder: placeholderImage %}
 
-    <figcaption class="absolute z-10 inset-0 w-full h-full flex flex-col items-center justify-center text-center container"
-                style="background-image: {{ image__overlay }};">
+    <figcaption class="absolute z-10 inset-0 w-full h-full flex flex-col items-center justify-center text-center container" style="background-image: {{ image__overlay }};">
       <div class="max-w-lg grid gap-3">
         {% render 'richtext', type: title_font, content: title, class: "text-theme-overlay-text" %}
         {% render 'richtext', type: subtitle_font, content: subtitle, class: "text-theme-overlay-text" %}
@@ -35,20 +36,41 @@
     </figcaption>
   </figure>
 {% else %}
-  <a id="block--{{ block.id }}" {{ block.shopify_attributes }}
-     class="image-feed__image group relative w-full {{ section.settings.image__aspect_ratio }} overflow-hidden {{ responsive_visibility }}"
-     style="border: solid {{ border_width | default: 0 }}px var(--color-primary-outline);"
-     data-scroll-item
-     href="{{ url }}">
+  <a
+    id="block--{{ block.id }}"
+    {{ block.shopify_attributes }}
+    class="image-feed__image group relative w-full {{ section.settings.image__aspect_ratio }} overflow-hidden {{ responsive_visibility }}"
+    style="border: solid {{ border_width | default: 0 }}px var(--color-primary-outline);"
+    data-scroll-item
+    href="{{ url }}">
+
+    <div class="overlay-image absolute w-full h-full bg-black z-10 opacity-30 group-hf:opacity-90">
+
+      <div class="flex flex-col justify-between h-full w-full">
+        {% comment %} username block {% endcomment %}
+        <div class="absolute z-20 w-24 h-8 m-6 bg-[#d9d9d9] rounded flex justify-center items-center">
+          <p class="text-black text-xs not-italic font-normal leading-[normal]">
+            @username
+          </p>
+        </div>
+
+        {% comment %} placeholder text {% endcomment %}
+        <div class="flex w-[294px] h-9 justify-center items-center shrink-0 absolute bottom-0">
+          <div class="shrink-0 text-white text-[15px] not-italic font-normal leading-[normal]">
+            Placeholder text here for little description
+          </div>
+        </div>
+      </div>
+
+    </div>
 
     {% if image == blank %}
       {% assign placeholderImage = 'product-' | append: forloop.index %}
     {% endif %}
 
-    {% render '_image', image: image, class: "absolute inset-0 w-full h-full object-cover scale-100 group-hf:scale-105 transition-all", placeholder: placeholderImage %}
+    {% render '_image', image: image, class: "absolute inset-0 w-full h-full object-cover scale-100 group-hf: transition-all", placeholder: placeholderImage %}
 
-    <heading class="absolute z-10 inset-0 w-full h-full flex flex-col items-center justify-center text-center container"
-             style="background-image: {{ image__overlay }};">
+    <heading class="absolute z-10 inset-0 w-full h-full flex flex-col items-center justify-center text-center container" style="background-image: {{ image__overlay }};">
       <div class="max-w-lg grid gap-3">
         {% render 'richtext', type: title_font, content: title, class: "text-theme-overlay-text" %}
         {% render 'richtext', type: subtitle_font, content: subtitle, class: "text-theme-overlay-text" %}
