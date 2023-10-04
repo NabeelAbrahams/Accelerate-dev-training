@@ -23,45 +23,36 @@ export const initSlideshowNew = async () => {
         buttons.forEach((button) => {
           button.classList.remove("active");
         });
-        setTimeout(
-          () => {
-            buttons[currentIndex].classList.add("active");
-          },
-          2
-        );
+        setTimeout(() => {
+          buttons[currentIndex].classList.add("active");
+        }, 2);
 
-        rotateRef.current = setInterval(
-          () => {
-            const nextPosition = container?.scrollLeft + container?.clientWidth;
+        rotateRef.current = setInterval(() => {
+          const nextPosition = container?.scrollLeft + container?.clientWidth;
 
-            buttons.forEach((button) => {
-              button?.classList.remove("active");
-            });
+          buttons.forEach((button) => {
+            button?.classList.remove("active");
+          });
 
-            container?.classList.remove("snap-mandatory", "snap-x");
-            scrollToX(
-              250,
-              nextPosition - 50 >= container.scrollWidth - container.clientWidth ? 0 : nextPosition,
-              container,
-              () => {
-                setTimeout(
-                  () => {
-                    const nextIndex = slides.findIndex(
-                      (slide) =>
-                        slide.offsetLeft < container.scrollLeft + 50 &&
-                        slide.offsetLeft > container.scrollLeft - 50
-                    );
-
-                    buttons[nextIndex]?.classList.add("active");
-                    container?.classList.add("snap-mandatory", "snap-x");
-                  },
-                  10
+          container?.classList.remove("snap-mandatory", "snap-x");
+          scrollToX(
+            250,
+            nextPosition - 50 >= container.scrollWidth - container.clientWidth ? 0 : nextPosition,
+            container,
+            () => {
+              setTimeout(() => {
+                const nextIndex = slides.findIndex(
+                  (slide) =>
+                    slide.offsetLeft < container.scrollLeft + 50 &&
+                    slide.offsetLeft > container.scrollLeft - 50
                 );
-              }
-            );
-          },
-          rotateDuration * 1000
-        );
+
+                buttons[nextIndex]?.classList.add("active");
+                container?.classList.add("snap-mandatory", "snap-x");
+              }, 10);
+            }
+          );
+        }, rotateDuration * 1000);
       }
     };
 
