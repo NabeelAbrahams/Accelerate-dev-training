@@ -30,10 +30,10 @@ export const imageFeed: ShopifySection<ImageFeedSection> = {
       type: "range",
       id: "min_width",
       label: "Image Min Width",
-      default: 360,
+      default: 288,
       min: 200,
       max: 640,
-      step: 10,
+      step: 8,
       unit: "px",
     },
     {
