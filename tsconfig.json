@@ -47,6 +47,7 @@
     "accelerate",
     "accelerate-dawn",
     "assets",
-    "themes"
+    "themes",
+    "./assets/tsconfig.json"
   ]
 }
