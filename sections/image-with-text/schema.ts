@@ -7,80 +7,38 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
   name: "Image with text",
   settings: [
     {
-      type: "image_picker",
-      id: "image",
-      label: "Image",
+      type: "radio",
+      id: "layout",
+      label: "Desktop Layout",
+      default: "order-2",
+      options: [
+        {
+          value: "order-2",
+          label: "Image Left",
+        },
+        {
+          value: "-order-1",
+          label: "Image Right",
+        },
+      ],
     },
-    sectionGlobals.sectionLayout,
     sectionGlobals.topPadding,
     sectionGlobals.bottomPadding,
     sectionGlobals.responsiveVisibility,
     sectionGlobals.colorScheme,
     sectionGlobals.sectionID,
   ],
-  max_blocks: 2,
+  max_blocks: 1,
   blocks: [
     {
-      type: "image",
-      name: "Image",
+      type: "benefit",
+      name: "the block",
       settings: [
-        {
-          type: "header",
-          content: "Image",
-        },
         {
           type: "image_picker",
           id: "image",
           label: "Image",
         },
-        {
-          type: "color_background",
-          id: "image__overlay",
-          label: "Image Overlay",
-        },
-        {
-          type: "url",
-          id: "url",
-          label: "URL",
-          default: "/",
-        },
-        {
-          type: "header",
-          content: "Optional Content",
-        },
-        {
-          type: "richtext",
-          id: "title",
-          label: "Title",
-        },
-        fontTypeRange({ id: "title_font", label: "Title Font", default_font: 1 }),
-        {
-          type: "richtext",
-          id: "subtitle_richtext",
-          label: "Subtitle",
-        },
-        fontTypeRange({ id: "subtitle_font", label: "Subtitle Font", default_font: 1 }),
-        {
-          type: "header",
-          content: "Layout",
-        },
-        {
-          type: "range",
-          id: "border_width",
-          label: "Border Width",
-          default: 0,
-          min: 0,
-          max: 8,
-          step: 1,
-          unit: "px",
-        },
-        sectionGlobals.responsiveVisibility,
-      ],
-    },
-    {
-      type: "benefit",
-      name: "Text (benefit)",
-      settings: [
         {
           type: "header",
           content: "Content",
@@ -89,6 +47,7 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
           type: "richtext",
           id: "title",
           label: "Title",
+          default: "<p>phasellus vocibus sem metus postulant</p>",
         },
         fontTypeRange({ id: "title_font", label: "Title font", default_font: 1 }),
         {
@@ -101,13 +60,28 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
       ],
     },
   ],
+
   presets: [
     {
-      name: "image with text",
+      name: "Benefit tabs",
       settings: {
-        section_layout: "fullwidth",
+        layout: "order-2",
+        padding_top: "pt-md",
+        padding_bottom: "pb-md",
+        responsive_visibility: "responsive",
+        color_scheme: "color_scheme_1",
       },
-      blocks: [{ type: "image" }, { type: "benefit" }],
+      blocks: [
+        {
+          type: "benefit",
+          settings: {
+            title: "<p>Mark Dixon</p>",
+            title_font: 1,
+            content:
+              "<p>I noticed your band is on the roster for the dance auditions after school today. Why even bother, McFly? You don't have a chance. You're too much like your old man. No McFly ever amounted to anything in the history of Hill Valley!</p>",
+          },
+        },
+      ],
     },
   ],
 };
