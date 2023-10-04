@@ -12,9 +12,9 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
     //   label: "Image all the people",
     // },
     sectionGlobals.sectionLayout,
-    sectionGlobals.responsiveVisibility,
     sectionGlobals.topPadding,
     sectionGlobals.bottomPadding,
+    sectionGlobals.responsiveVisibility,
     sectionGlobals.colorScheme,
     sectionGlobals.sectionID,
   ],
@@ -79,13 +79,8 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
     },
     {
       type: "benefit",
-      name: "Benefit",
+      name: "Text (benefit)",
       settings: [
-        {
-          type: "image_picker",
-          id: "image",
-          label: "Image",
-        },
         {
           type: "header",
           content: "Content",
