@@ -139,7 +139,13 @@ export const imageFeed: ShopifySection<ImageFeedSection> = {
       settings: {
         section_layout: "fullwidth",
       },
-      blocks: [{ type: "image" }, { type: "image" }, { type: "image" }, { type: "image" }],
+      blocks: [
+        { type: "image" },
+        { type: "image" },
+        { type: "image" },
+        { type: "image" },
+        { type: "image" },
+      ],
     },
   ],
 };
