@@ -6,11 +6,11 @@ import { ShopifySection } from "types/shopify";
 export const imageWithText: ShopifySection<ImageWithTextSection> = {
   name: "Image with text",
   settings: [
-    // {
-    //   type: "image_picker",
-    //   id: "image_with_text_image",
-    //   label: "Image all the people",
-    // },
+    {
+      type: "image_picker",
+      id: "image",
+      label: "Image",
+    },
     sectionGlobals.sectionLayout,
     sectionGlobals.topPadding,
     sectionGlobals.bottomPadding,
@@ -107,7 +107,7 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
       settings: {
         section_layout: "fullwidth",
       },
-      blocks: [{ type: "image" }],
+      blocks: [{ type: "image" }, { type: "benefit" }],
     },
   ],
 };
