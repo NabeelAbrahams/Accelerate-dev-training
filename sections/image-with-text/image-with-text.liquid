@@ -1,5 +1,6 @@
 {%- comment -%} Auto Generated Variables start {%- endcomment -%}
 {%- liquid
+  assign image = section.settings.image_picker
   assign section_layout = section.settings.section_layout
   assign padding_top = section.settings.padding_top
   assign padding_bottom = section.settings.padding_bottom
@@ -9,3 +10,15 @@
 -%}
 {%- comment -%} Auto Generated Variables end {%- endcomment -%}
 
+<div id="{{ sectionID }}" class="image-with-text w-screen h-[75vh] bg-white {{ section_layout }} {{ color_scheme }} {{ padding_top }} {{ padding_bottom }} {{ responsive_visibility }}">
+  <div class="grid md:grid-cols-2">
+    <section class="flex-1 w-full flex items-center justify-center overflow-hidden">
+      <figure class="relative grid flex-1 min-h-full">
+        <div>
+          {% render 'image', image: image %}
+        </div>
+      </figure>
+    </section>
+    <section class="h-full w-full flex flex-col py-8"></section>
+  </div>
+</div>
