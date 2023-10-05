@@ -8,17 +8,24 @@
 -%}
 {%- comment -%} Auto Generated Variables end {%- endcomment -%}
 
-<div id="{{ sectionID }}" class="image-with-text w-screen h-[75vh] bg-white {{ section_layout }} {{ color_scheme }} {{ padding_top }} {{ padding_bottom }} {{ responsive_visibility }}">
+<div id="{{ sectionID }}" class="image-with-text w-screen h-[75vh] bg-white {{ section_layout }} {{ color_scheme }} {{ padding_top }} {{ responsive_visibility }}">
   <div class="h-full grid md:grid-cols-2">
     <div class="overflow-hidden">
       {% for block in section.blocks %}
         {% render 'image-with-text.benefit', block: block, forloop: forloop, type: 'image-mobile-content' %}
       {% endfor %}
     </div>
-    <div class="h-full flex items-center justify-center">
-      {% for block in section.blocks %}
-        {% render 'image-with-text.benefit', block: block, forloop: forloop, type: 'desktop-text-content' %}
-      {% endfor %}
+
+    {% comment %} text section {% endcomment %}
+    <div class="flex w-full justify-center">
+      <div class="h-full flex items-center justify-center w-3/4">
+        {% for block in section.blocks %}
+          {% comment %} div for each richtext setting {% endcomment %}
+          <div class="h-full flex items-center">
+            {% render 'image-with-text.benefit', block: block, forloop: forloop, type: 'desktop-text-content' %}
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>

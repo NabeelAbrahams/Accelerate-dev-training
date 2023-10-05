@@ -13,14 +13,13 @@
 {%- comment -%} Auto Generated Variables end {%- endcomment -%}
 
 {% case type %}
-  <div class="flex h-full justify-center items-center">
+  <div class="flex h-full justify-center items-center w-3/4">
     {% render 'color_background' %}
     {% when 'image-mobile-content' %}
     <figure class="relative grid transition-all ease-in-out snap-start min-w-full md:min-w-full snap-always">
       <picture class="block relative pb-[100%] w-full overflow-hidden rounded-theme-md">
         {% if image == blank %}
-          {% assign number = forloop.index | modulo: 6 | plus: 1 %}
-          {% assign placeholderImage = 'collection-' | append: number %}
+          {% assign placeholderImage = 'collection-1' %}
         {% endif %}
         {% render '_image', image: image, class: "absolute top-0 left-0 h-full w-full bg-inherit object-cover", placeholder: placeholderImage %}
       </picture>
@@ -32,10 +31,16 @@
     </figure>
 
     {% when 'desktop-text-content' %}
-    <div class="relative mt-0 hidden lg:block">
-      {% render 'richtext', type: subtitle_font, content: subtitle %}
-      {% render 'richtext', type: title_font, content: title %}
-      {% render 'richtext', type: content_font, content: content %}
+    <div class="relative mt-0 hidden lg:flex lg:h-3/4 lg:flex-col lg:justify-center ">
+      <div>
+        {% render 'richtext', type: subtitle_font, content: subtitle %}
+      </div>
+      <div>
+        {% render 'richtext', type: title_font, content: title, class: 'text-lg' %}
+      </div>
+      <div>
+        {% render 'richtext', type: content_font, content: content %}
+      </div>
     </div>
   </div>
 {% endcase %}

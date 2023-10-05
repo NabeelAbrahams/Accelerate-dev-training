@@ -67,10 +67,10 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
 
   presets: [
     {
-      name: "Benefit tabs",
+      name: "Image with text",
       settings: {
-        padding_top: "pt-md",
-        padding_bottom: "pb-0",
+        padding_top: "pt-0",
+        padding_bottom: "pb-md",
         responsive_visibility: "responsive",
         color_scheme: "color_scheme_1",
       },
@@ -78,6 +78,7 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
         {
           type: "benefit",
           settings: {
+            subtitle_font: 2,
             title: "<p>A benefit.</p>",
             title_font: 1,
           },
