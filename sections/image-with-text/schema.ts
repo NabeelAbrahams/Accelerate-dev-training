@@ -6,22 +6,6 @@ import { ShopifySection } from "types/shopify";
 export const imageWithText: ShopifySection<ImageWithTextSection> = {
   name: "Image with text",
   settings: [
-    {
-      type: "radio",
-      id: "layout",
-      label: "Desktop Layout",
-      default: "order-2",
-      options: [
-        {
-          value: "order-2",
-          label: "Image Left",
-        },
-        {
-          value: "-order-1",
-          label: "Image Right",
-        },
-      ],
-    },
     sectionGlobals.topPadding,
     sectionGlobals.bottomPadding,
     sectionGlobals.responsiveVisibility,
@@ -32,7 +16,7 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
   blocks: [
     {
       type: "benefit",
-      name: "the block",
+      name: "Text next to Image",
       settings: [
         {
           type: "image_picker",
@@ -44,6 +28,25 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
           content: "Content",
         },
         {
+          type: "color",
+          id: "body_text",
+          label: "Body text",
+          default: "#000000",
+        },
+        {
+          type: "color_background",
+          id: "background",
+          label: "Background",
+          default: "linear-gradient(#ffffff, #000000)",
+        },
+        {
+          type: "richtext",
+          id: "subtitle",
+          label: "Subtitle",
+          default: "<p>why this is cool.</p>",
+        },
+        fontTypeRange({ id: "subtitle_font", label: "Subtitle font", default_font: 1 }),
+        {
           type: "richtext",
           id: "title",
           label: "Title",
@@ -54,7 +57,8 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
           type: "richtext",
           id: "content",
           label: "Richtext",
-          default: "<p>See you later, Pop. Whoo! Time to change that oil.</p>",
+          default:
+            "<p>A lot fo cool things about this product. You really need this product. Shroom shroom. A lot fo cool things about this product. You really need this product. Shroom shroom. A lot fo cool things about this product. You really need this product. Shroom shroom.</p>",
         },
         fontTypeRange({ id: "content_font", label: "Content font", default_font: 1 }),
       ],
@@ -65,9 +69,8 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
     {
       name: "Benefit tabs",
       settings: {
-        layout: "order-2",
         padding_top: "pt-md",
-        padding_bottom: "pb-md",
+        padding_bottom: "pb-0",
         responsive_visibility: "responsive",
         color_scheme: "color_scheme_1",
       },
@@ -75,10 +78,8 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
         {
           type: "benefit",
           settings: {
-            title: "<p>Mark Dixon</p>",
+            title: "<p>A benefit.</p>",
             title_font: 1,
-            content:
-              "<p>I noticed your band is on the roster for the dance auditions after school today. Why even bother, McFly? You don't have a chance. You're too much like your old man. No McFly ever amounted to anything in the history of Hill Valley!</p>",
           },
         },
       ],

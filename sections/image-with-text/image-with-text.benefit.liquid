@@ -1,6 +1,10 @@
 {%- comment -%} Auto Generated Variables start {%- endcomment -%}
 {%- liquid
   assign image = block.settings.image
+  assign body_text = block.settings.body_text
+  assign background = block.settings.background
+  assign subtitle = block.settings.subtitle
+  assign subtitle_font = block.settings.subtitle_font
   assign title = block.settings.title
   assign title_font = block.settings.title_font
   assign content = block.settings.content
@@ -10,6 +14,7 @@
 
 {% case type %}
   <div class="flex h-full justify-center items-center">
+    {% render 'color_background' %}
     {% when 'image-mobile-content' %}
     <figure class="relative grid transition-all ease-in-out snap-start min-w-full md:min-w-full snap-always">
       <picture class="block relative pb-[100%] w-full overflow-hidden rounded-theme-md">
@@ -20,13 +25,15 @@
         {% render '_image', image: image, class: "absolute top-0 left-0 h-full w-full bg-inherit object-cover", placeholder: placeholderImage %}
       </picture>
       <figcaption class="lg:hidden text-center mt-0 overflow-hidden">
-        {% render 'richtext', type: title_font, content: title %}
+        {% render 'richtext', type: subtitle_font, content: subtitle %}
+        {% render 'richtext', type: title_font, content: title, color: block.settings.color %}
         {% render 'richtext', type: content_font, content: content %}
       </figcaption>
     </figure>
 
     {% when 'desktop-text-content' %}
     <div class="relative mt-0 hidden lg:block">
+      {% render 'richtext', type: subtitle_font, content: subtitle %}
       {% render 'richtext', type: title_font, content: title %}
       {% render 'richtext', type: content_font, content: content %}
     </div>
