@@ -2,6 +2,7 @@ import { sectionGlobals } from "globals/settings/section-globals";
 import { fontTypeRange } from "globals/settings/type-range";
 import { ImageWithTextSection } from "types/sections";
 import { ShopifySection } from "types/shopify";
+import { buttons } from "globals/settings/buttons";
 
 export const imageWithText: ShopifySection<ImageWithTextSection> = {
   name: "Image with text",
@@ -61,8 +62,31 @@ export const imageWithText: ShopifySection<ImageWithTextSection> = {
             "<p>A lot fo cool things about this product. You really need this product. Shroom shroom. A lot fo cool things about this product. You really need this product. Shroom shroom. A lot fo cool things about this product. You really need this product. Shroom shroom.</p>",
         },
         fontTypeRange({ id: "content_font", label: "Content font", default_font: 1 }),
+        {
+          type: "url",
+          id: "button_link",
+          label: "Button link",
+        },
       ],
     },
+    // {
+    //   type: "view_all_bar",
+    //   name: "View all bar",
+    //   limit: 1,
+    //   settings: [
+    //     {
+    //       type: "richtext",
+    //       id: "title",
+    //       label: "Title",
+    //     },
+    //     fontTypeRange({ id: "title_font", label: "Title style", default_font: 1 }),
+    //     {
+    //       type: "url",
+    //       id: "url",
+    //       label: "URL",
+    //     },
+    //   ],
+    // },
   ],
 
   presets: [

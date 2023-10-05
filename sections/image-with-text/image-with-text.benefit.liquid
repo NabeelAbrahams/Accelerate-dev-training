@@ -9,38 +9,64 @@
   assign title_font = block.settings.title_font
   assign content = block.settings.content
   assign content_font = block.settings.content_font
+  assign button_link = block.settings.button_link
 -%}
 {%- comment -%} Auto Generated Variables end {%- endcomment -%}
 
 {% case type %}
-  <div class="flex h-full justify-center items-center w-3/4">
+  <div class="sm:flex sm:h-full sm:justify-center sm:items-center sm:w-3/4 flex w-[375px] flex-col items-start px-6 py-[29px]">
     {% render 'color_background' %}
     {% when 'image-mobile-content' %}
     <figure class="relative grid transition-all ease-in-out snap-start min-w-full md:min-w-full snap-always">
-      <picture class="block relative pb-[100%] w-full overflow-hidden rounded-theme-md">
+      <picture class="block relative sm:pb-[100%] pb-9 w-full overflow-hidden rounded-theme-md">
         {% if image == blank %}
           {% assign placeholderImage = 'collection-1' %}
         {% endif %}
-        {% render '_image', image: image, class: "absolute top-0 left-0 h-full w-full bg-inherit object-cover", placeholder: placeholderImage %}
+        {% render '_image', image: image, class: "sm:absolute sm:top-0 sm:left-0 sm:h-full sm:w-full bg-inherit object-cover", placeholder: placeholderImage %}
       </picture>
-      <figcaption class="lg:hidden text-center mt-0 overflow-hidden">
-        {% render 'richtext', type: subtitle_font, content: subtitle %}
-        {% render 'richtext', type: title_font, content: title, color: block.settings.color %}
-        {% render 'richtext', type: content_font, content: content %}
-      </figcaption>
+      <div class="flex flex-col w-full items-center gap-6 self-stretch pt-6 pb-12 px-0 bg-[#FDFDF9]">
+        <div class="flex flex-col items-center gap-6">
+          <figcaption class="sm:hidden flex flex-col h-full bg-[#FDFDF9] text-center mt-0 overflow-hidden items-center gap-6 self-stretch pt-6 pb-12 px-0">
+            <div class="w-[90vh] gap-6">
+              <div>
+                {% render 'richtext', type: subtitle_font, content: subtitle %}
+              </div>
+              <div>
+                {% render 'richtext', type: title_font, content: title, color: block.settings.color %}
+              </div>
+              <div class="w-full text-[13px] not-italic font-normal leading-[140%]">
+                {% render 'richtext', type: content_font, content: content %}
+              </div>
+            </div>
+          </figcaption>
+        </div>
+        {% comment %} button {% endcomment %}
+        <div>
+          <button class=" text-white bg-[#C8102E] flex justify-center items-center gap-2 px-16 py-5 rounded-md">SHOP ALL SUPER SHROOMS</button>
+        </div>
+      </div>
     </figure>
 
     {% when 'desktop-text-content' %}
-    <div class="relative mt-0 hidden lg:flex lg:h-3/4 lg:flex-col lg:justify-center ">
-      <div>
-        {% render 'richtext', type: subtitle_font, content: subtitle %}
+      <div class="relative mt-0 hidden lg:flex lg:h-3/4 lg:flex-col lg:justify-center flex-col items-start gap-8 self-stretch">
+      <div class="flex flex-col items-start gap-8 self-stretch">
+        <div>
+          {% render 'richtext', type: subtitle_font, content: subtitle, class: 'text-[#C8102E]' %}
+        </div>
+        <div>
+          {% render 'richtext', type: title_font, content: title, class: 'text-lg' %}
+        </div>
+        <div>
+          {% render 'richtext', type: content_font, content: content %}
+        </div>
       </div>
+
+
+      {% comment %} button {% endcomment %}
       <div>
-        {% render 'richtext', type: title_font, content: title, class: 'text-lg' %}
+        <button class=" text-white bg-[#C8102E] flex justify-center items-center gap-2 px-16 py-5 rounded-md">SHOP ALL SUPER SHROOMS</button>
       </div>
-      <div>
-        {% render 'richtext', type: content_font, content: content %}
-      </div>
+
     </div>
   </div>
 {% endcase %}

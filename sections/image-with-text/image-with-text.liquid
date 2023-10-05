@@ -8,7 +8,7 @@
 -%}
 {%- comment -%} Auto Generated Variables end {%- endcomment -%}
 
-<div id="{{ sectionID }}" class="image-with-text w-screen h-[75vh] bg-white {{ section_layout }} {{ color_scheme }} {{ padding_top }} {{ responsive_visibility }}">
+<div id="{{ sectionID }}" class="image-with-text w-screen sm:h-[75vh] bg-white {{ section_layout }} {{ color_scheme }} {{ padding_top }} {{ responsive_visibility }}">
   <div class="h-full grid md:grid-cols-2">
     <div class="overflow-hidden">
       {% for block in section.blocks %}
@@ -17,8 +17,8 @@
     </div>
 
     {% comment %} text section {% endcomment %}
-    <div class="flex w-full justify-center">
-      <div class="h-full flex items-center justify-center w-3/4">
+    <div class="flex w-full justify-center bg-[#FDFDF9] sm:bg-[#F7F4EE] flex-col items-center gap-2.5 flex-[1_0_0] self-stretch px-40 py-[100px]">
+      <div class="h-full flex items-center justify-center w-[640px] mt-16">
         {% for block in section.blocks %}
           {% comment %} div for each richtext setting {% endcomment %}
           <div class="h-full flex items-center">
